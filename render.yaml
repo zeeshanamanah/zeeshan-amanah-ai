@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: zeeshan-amanah-ai
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:web_app --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 120
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
